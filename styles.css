@@ -1,33 +1,44 @@
 *{
     box-sizing: border-box;
     margin: 0;
-    
+    border-radius: .5rem;
+    color: #E2E9F3;
+
 }
 body{
-   min-height: 99dvh;
+    min-height: 99dvh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-auto-flow: column;
+    background-color: #0a0a0a;
 }
 h1{
     grid-column: 2/3;
     justify-self: center;
     align-self: center;
+    
 }
 .dialog{
     grid-column: 2/3;
     justify-self: center;
     grid-row: 2/3;
     display: flex;
+    justify-content: space-evenly;
     flex-direction: column;
-    gap: 2rem;
-    padding: 1rem;
     width: 100%;
+    padding: 0 1rem;
+    border: 1rem solid #14532d;
+    
 }
-.dialog button{
-    height: 2rem;
+.dialog:hover{
+    border: 1rem solid #22c55e;
 
+}
+ button{
+    height: 2rem;
+    border-radius:.5rem ;
+    background-color: #22c55e;
 }
 .hidden{
     display: none;
@@ -37,7 +48,10 @@ h1{
     padding: 1rem;
     grid-column:2 /3 ;
     grid-row: 2/4;
-    background-color: blue;
+    background-color: black;
+    border: 1rem solid #22c55e;
+
+
 }
 form{
     display: flex;
@@ -56,19 +70,25 @@ form{
     flex-direction: column;
     gap: .5rem;
 }
+input{
+    color: #000;
+}
 .books{
     grid-column: 1/4;
-    grid-row-start: 2 ;
+    grid-row: 2/4 ;
     padding: 1rem;
     margin: 1rem;
-    
-    background-color: blueviolet;
+    min-height: 10rem;
+    background-color: black;
+   border: 1rem solid #22c55e;
+
 }
 #content{
     display: flex ;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 .card{
-   background-color: azure; 
-   padding: .5rem;
+   border: 1rem solid #22c55e;
+   padding: 1rem;
 }
