@@ -34,6 +34,8 @@ function Book(author,title,pages,read){
     this.read=read;
 };
 function addBookToLibrary(author,title,pages,read){
+   
+
     const newBook ={id:title.toLowerCase()+author.toLowerCase(),
         author:author,
         title:title,
@@ -44,6 +46,7 @@ function addBookToLibrary(author,title,pages,read){
     update();
     
 }
+
 const update=()=>{
     content.innerHTML=``;
     myLibrary.forEach(book => {
@@ -60,7 +63,26 @@ const update=()=>{
     });
 
 }
-
+const checkValid=()=>{
+     fAuthor.setCustomValidity("");
+     fTitle.setCustomValidity("");
+     nPages.setCustomValidity(""); 
+    if(fAuthor.validity.valueMissing){
+        fAuthor.setCustomValidity("Enter a value");
+        return 0;
+    }else if(fTitle.validity.valueMissing){
+        fTitle.setCustomValidity("Enter a value");
+        return 0;
+    }else if (nPages.validity.rangeUnderflow || nPages.validity.valueMissing) {
+         nPages.setCustomValidity("More than 200 page");
+        return 0;
+    } 
+    else {
+       
+        return 1;
+    }
+    
+}
 
 const deleteBook = (buttonEl) => {
     const bookIndex = myLibrary.findIndex(
@@ -101,11 +123,17 @@ bCloseBtn.addEventListener("click",()=>{
 })
 
 submitBtn.addEventListener("click",()=>{
-
-    addBookToLibrary(fAuthor.value,fTitle.value,nPages.value,fRead[0].value.checked?fRead[0].value:fRead[1].value);
-    update();
-    event.preventDefault();
-    formCon.classList.toggle("hidden");  
-
+   
+   if(checkValid()){
+     addBookToLibrary(
+       fAuthor.value,
+       fTitle.value,
+       nPages.value,
+       fRead[0].value.checked ? fRead[0].value : fRead[1].value
+     );
+     update();
+     event.preventDefault();
+     formCon.classList.toggle("hidden");
+   }
 })
 
